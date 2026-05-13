@@ -1,0 +1,46 @@
+{
+  "name": "multi-env-notify-cli",
+  "version": "0.1.0",
+  "description": "CLI gửi thông báo đa kênh; kênh nào đủ cấu hình .env thì gửi, thiếu thì tự bỏ qua.",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "multi-notify": "bin/multi-notify.js",
+    "menv-notify": "bin/multi-notify.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    ".env.example"
+  ],
+  "scripts": {
+    "dev": "node bin/multi-notify.js",
+    "notify": "node bin/multi-notify.js",
+    "start": "node bin/multi-notify.js",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "notification",
+    "notify",
+    "telegram",
+    "slack",
+    "discord",
+    "smtp",
+    "webhook",
+    "cli",
+    "env"
+  ],
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "nodemailer": "^7.0.6"
+  }
+}
