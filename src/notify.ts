@@ -1,5 +1,6 @@
 import { discordChannel } from './channels/discord.js';
 import { emailChannel } from './channels/email.js';
+import { ntfyChannel } from './channels/ntfy.js';
 import { genericWebhookChannel } from './channels/webhook.js';
 import { slackChannel } from './channels/slack.js';
 import { telegramChannel } from './channels/telegram.js';
@@ -13,6 +14,7 @@ export function defaultChannels(): NotifyChannel[] {
     discordChannel(),
     telegramChannel(),
     twilioSmsChannel(),
+    ntfyChannel(),
     genericWebhookChannel(),
   ];
 }
