@@ -2,7 +2,7 @@ import { env, missingEnv, requireAll } from '../env.js';
 import { plainText } from '../format.js';
 import type { NotifyChannel, NotifyPayload } from '../types.js';
 
-const requiredEnv = ['TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN', 'TWILIO_FROM_NUMBER', 'TWILIO_TO_NUMBER'];
+const requiredEnv = ['MULTI_NOTIFY_TWILIO_ACCOUNT_SID', 'MULTI_NOTIFY_TWILIO_AUTH_TOKEN', 'MULTI_NOTIFY_TWILIO_FROM_NUMBER', 'MULTI_NOTIFY_TWILIO_TO_NUMBER'];
 
 export function twilioSmsChannel(): NotifyChannel {
   return {
@@ -18,13 +18,13 @@ export function twilioSmsChannel(): NotifyChannel {
         };
       }
 
-      const sid = env('TWILIO_ACCOUNT_SID');
-      const token = env('TWILIO_AUTH_TOKEN');
+      const sid = env('MULTI_NOTIFY_TWILIO_ACCOUNT_SID');
+      const token = env('MULTI_NOTIFY_TWILIO_AUTH_TOKEN');
       const url = `https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`;
 
       const body = new URLSearchParams({
-        From: env('TWILIO_FROM_NUMBER'),
-        To: env('TWILIO_TO_NUMBER'),
+        From: env('MULTI_NOTIFY_TWILIO_FROM_NUMBER'),
+        To: env('MULTI_NOTIFY_TWILIO_TO_NUMBER'),
         Body: plainText(payload).slice(0, 1500),
       });
 

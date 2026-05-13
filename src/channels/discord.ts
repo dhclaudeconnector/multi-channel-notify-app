@@ -1,7 +1,7 @@
 import { env, missingEnv, requireAll } from '../env.js';
 import type { NotifyChannel, NotifyPayload } from '../types.js';
 
-const requiredEnv = ['DISCORD_WEBHOOK_URL'];
+const requiredEnv = ['MULTI_NOTIFY_DISCORD_WEBHOOK_URL'];
 
 const colorByLevel: Record<string, number> = {
   debug: 8421504,
@@ -25,11 +25,11 @@ export function discordChannel(): NotifyChannel {
         };
       }
 
-      const response = await fetch(env('DISCORD_WEBHOOK_URL'), {
+      const response = await fetch(env('MULTI_NOTIFY_DISCORD_WEBHOOK_URL'), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-          username: env('APP_NAME', 'Multi Channel Notify'),
+          username: env('MULTI_NOTIFY_APP_NAME', 'Multi Channel Notify'),
           embeds: [
             {
               title: payload.title,

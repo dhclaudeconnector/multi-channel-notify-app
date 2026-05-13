@@ -1,7 +1,7 @@
 import { env, missingEnv, requireAll } from '../env.js';
 import type { NotifyChannel, NotifyPayload } from '../types.js';
 
-const requiredEnv = ['NOTIFY_WEBHOOK_URL'];
+const requiredEnv = ['MULTI_NOTIFY_WEBHOOK_URL'];
 
 export function genericWebhookChannel(): NotifyChannel {
   return {
@@ -17,8 +17,8 @@ export function genericWebhookChannel(): NotifyChannel {
         };
       }
 
-      const response = await fetch(env('NOTIFY_WEBHOOK_URL'), {
-        method: env('NOTIFY_WEBHOOK_METHOD', 'POST'),
+      const response = await fetch(env('MULTI_NOTIFY_WEBHOOK_URL'), {
+        method: env('MULTI_NOTIFY_WEBHOOK_METHOD', 'POST'),
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload),
       });

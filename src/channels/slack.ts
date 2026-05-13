@@ -1,7 +1,7 @@
 import { env, missingEnv, requireAll } from '../env.js';
 import type { NotifyChannel, NotifyPayload } from '../types.js';
 
-const requiredEnv = ['SLACK_WEBHOOK_URL'];
+const requiredEnv = ['MULTI_NOTIFY_SLACK_WEBHOOK_URL'];
 
 export function slackChannel(): NotifyChannel {
   return {
@@ -17,7 +17,7 @@ export function slackChannel(): NotifyChannel {
         };
       }
 
-      const response = await fetch(env('SLACK_WEBHOOK_URL'), {
+      const response = await fetch(env('MULTI_NOTIFY_SLACK_WEBHOOK_URL'), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({

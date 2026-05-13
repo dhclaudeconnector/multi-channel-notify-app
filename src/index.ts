@@ -19,9 +19,9 @@ function normalizeLevel(value: string): NotifyLevel {
 }
 
 const payload: NotifyPayload = {
-  title: argValue('title') ?? env('NOTIFY_TITLE', 'Thông báo hệ thống'),
-  message: argValue('message') ?? env('NOTIFY_MESSAGE', 'Đây là tin nhắn thử nghiệm.'),
-  level: normalizeLevel(argValue('level') ?? env('DEFAULT_LEVEL', 'info')),
+  title: argValue('title') ?? env('MULTI_NOTIFY_NOTIFY_TITLE', 'Thông báo hệ thống'),
+  message: argValue('message') ?? env('MULTI_NOTIFY_NOTIFY_MESSAGE', 'Đây là tin nhắn thử nghiệm.'),
+  level: normalizeLevel(argValue('level') ?? env('MULTI_NOTIFY_DEFAULT_LEVEL', 'info')),
   timestamp: new Date().toISOString(),
 };
 

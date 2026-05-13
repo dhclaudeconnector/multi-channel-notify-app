@@ -1,8 +1,10 @@
-# Task: Thêm channel ntfy
+# Task: <tên task ngắn>
 
 ## User prompt
 
-> Triển khai thêm channel theo repo: https://github.com/binwiederhier/ntfy
+>
+
+- Chuyển tất cả var trong .env với prefix: `MULTI_NOTIFY_`
 
 ## Thông tin cần xác nhận
 
@@ -13,7 +15,7 @@ Agent điền mục này nếu prompt thiếu dữ liệu cần thiết để tr
 
 Câu hỏi cần xác nhận:
 
-- Không có
+-
 
 ## Checklist triển khai
 
@@ -31,25 +33,30 @@ Agent tự tạo checklist từ `User prompt`, rồi đánh dấu khi từng bư
 
 Agent cập nhật danh sách file đã đọc/chỉnh.
 
-- `CLAUDE.md`
-- `src/notify.ts`
+- `src/cli.js`
+- `src/index.js`
+- `src/index.ts`
+- `src/channels/email.ts`
+- `src/channels/slack.ts`
+- `src/channels/discord.ts`
+- `src/channels/telegram.ts`
+- `src/channels/twilio.ts`
+- `src/channels/webhook.ts`
 - `src/channels/ntfy.ts`
-- `src/format.ts`
-- `src/env.ts`
-- `src/types.ts`
+- `.env`
 - `.env.example`
 - `README.md`
-- `.opushforce.message`
-- `tasks/task-add-ntfy.md`
+- `tasks/done/task-add-ntfy.md`
 
 ## Kết quả kiểm tra
 
 Agent ghi command đã chạy hoặc lý do không chạy.
 
-- `npx tsc --noEmit` → pass.
+- Đã grep toàn repo để rà prefix env cũ.
+- `npm run dev -- --list-targets` → pass, CLI đọc prefix `MULTI_NOTIFY_` đúng.
 
 ## Ghi chú cho lần sau
 
 Chỉ ghi thông tin hữu ích trực tiếp cho task này, không thay cho memory dài hạn.
 
-- ntfy dùng HTTP publish, bật bằng `MULTI_NOTIFY_NTFY_TOPIC`; mặc định server là `https://ntfy.sh`.
+- Toàn bộ env app/runtime đã chuẩn hoá sang prefix `MULTI_NOTIFY_`.

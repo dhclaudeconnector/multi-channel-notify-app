@@ -3,7 +3,7 @@ import { boolEnv, env, missingEnv, requireAll } from '../env.js';
 import { htmlText, plainText } from '../format.js';
 import type { NotifyChannel, NotifyPayload } from '../types.js';
 
-const requiredEnv = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'EMAIL_FROM', 'EMAIL_TO'];
+const requiredEnv = ['MULTI_NOTIFY_SMTP_HOST', 'MULTI_NOTIFY_SMTP_PORT', 'MULTI_NOTIFY_SMTP_USER', 'MULTI_NOTIFY_SMTP_PASS', 'MULTI_NOTIFY_EMAIL_FROM', 'MULTI_NOTIFY_EMAIL_TO'];
 
 export function emailChannel(): NotifyChannel {
   return {
@@ -20,18 +20,18 @@ export function emailChannel(): NotifyChannel {
       }
 
       const transporter = nodemailer.createTransport({
-        host: env('SMTP_HOST'),
-        port: Number(env('SMTP_PORT', '587')),
-        secure: boolEnv('SMTP_SECURE', false),
+        host: env('MULTI_NOTIFY_SMTP_HOST'),
+        port: Number(env('MULTI_NOTIFY_SMTP_PORT', '587')),
+        secure: boolEnv('MULTI_NOTIFY_SMTP_SECURE', false),
         auth: {
-          user: env('SMTP_USER'),
-          pass: env('SMTP_PASS'),
+          user: env('MULTI_NOTIFY_SMTP_USER'),
+          pass: env('MULTI_NOTIFY_SMTP_PASS'),
         },
       });
 
       const info = await transporter.sendMail({
-        from: env('EMAIL_FROM'),
-        to: env('EMAIL_TO'),
+        from: env('MULTI_NOTIFY_EMAIL_FROM'),
+        to: env('MULTI_NOTIFY_EMAIL_TO'),
         subject: `[${payload.level.toUpperCase()}] ${payload.title}`,
         text: plainText(payload),
         html: htmlText(payload),

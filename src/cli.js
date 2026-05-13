@@ -47,7 +47,7 @@ function parseMeta() {
 }
 
 function parseLevel(value) {
-  const level = value ?? process.env.DEFAULT_LEVEL ?? 'info';
+  const level = value ?? process.env.MULTI_NOTIFY_DEFAULT_LEVEL ?? 'info';
   const allowed = ['debug', 'info', 'success', 'warning', 'error'];
   return allowed.includes(level) ? level : 'info';
 }
@@ -135,8 +135,8 @@ export async function runCli() {
   }
 
   const payload = {
-    title: readArg('title') ?? process.env.NOTIFY_TITLE ?? 'Thông báo hệ thống',
-    message: readArg('message') ?? process.env.NOTIFY_MESSAGE ?? 'Đây là tin nhắn thử nghiệm.',
+    title: readArg('title') ?? process.env.MULTI_NOTIFY_NOTIFY_TITLE ?? 'Thông báo hệ thống',
+    message: readArg('message') ?? process.env.MULTI_NOTIFY_NOTIFY_MESSAGE ?? 'Đây là tin nhắn thử nghiệm.',
     level: parseLevel(readArg('level')),
     timestamp: new Date().toISOString(),
     meta: parseMeta(),
